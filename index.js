@@ -8,8 +8,16 @@ const difference_of_two_numbers = async (req, res) => {
     res.end()
   }
 
+  let sum = 0
+  const numStr = req.url.split("?")[1]
+  if (numStr) {
+    const nums = numStr.split("&").map((num) => parseInt(num.split("=")[1]))
+    sum = nums[0] - nums[1]
+  }
+
+
   // Add your code here
-  res.write(JSON.stringify({success: true, msg: `Hello difference_of_two_numbers`}))
+  res.write(JSON.stringify({success: true, msg: `${sum}`}))
   res.end()
   
 }
